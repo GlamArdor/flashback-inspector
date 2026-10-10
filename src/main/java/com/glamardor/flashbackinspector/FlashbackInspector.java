@@ -90,6 +90,7 @@ public class FlashbackInspector implements ClientModInitializer {
 			return;
 		}
 		wasInReplay = true;
+		InspectorState.get().tick();
 
 		while (logKey != null && logKey.wasPressed()) {
 			if (client.currentScreen == null || client.currentScreen instanceof InspectorScreen) {

@@ -10,7 +10,8 @@
 	"flashbackinspector.button.log": "Журнал контейнеров",
 
 	"flashbackinspector.log.title": "Открытия контейнеров",
-	"flashbackinspector.log.empty": "Пока ничего. Журнал заполняется по мере просмотра записи.",
+	"flashbackinspector.log.empty": "В этой записи контейнеры не открывались.",
+	"flashbackinspector.log.untitled": "Контейнер на %s слотов",
 
 	"flashbackinspector.hint.container": "Открыт контейнер: %s – нажми %s",
 

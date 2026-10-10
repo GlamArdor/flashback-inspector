@@ -22,9 +22,8 @@ import java.util.List;
  * replay there and stops it, which is the short way from "something was taken" to the frame it was
  * taken on.
  *
- * <p>The list fills in as the replay is watched, because that is when the packets go past. Seeking
- * over a stretch fills it in for that stretch too, so scrubbing once through a recording is enough
- * to have the whole thing.
+ * <p>The whole recording is listed from the start, read out of the replay file. Only while that read
+ * is still going, or if it failed, does the list fall back to what has been watched so far.
  */
 public class ContainerLogScreen extends Screen {
 	private static final int ROW_WIDTH = 320;
@@ -58,13 +57,26 @@ public class ContainerLogScreen extends Screen {
 		Text line = Text.literal(InspectorState.timecode(opening.tick()))
 				.formatted(Formatting.GOLD)
 				.append(Text.literal("  "))
-				.append(opening.title().copy().formatted(Formatting.WHITE));
+				.append(titleOf(opening).copy().formatted(Formatting.WHITE));
 		BlockPos pos = opening.pos();
 		if (pos != null) {
 			line = line.copy().append(Text.literal("  " + pos.getX() + " " + pos.getY() + " " + pos.getZ())
 					.formatted(Formatting.DARK_GRAY));
 		}
 		return line;
+	}
+
+	/**
+	 * The container's own name, or its size when the name is nothing readable. Plugin menus on a
+	 * server often carry a title made of resource pack glyphs that draw the menu's background, which
+	 * in a button is blank or a smear.
+	 */
+	private static Text titleOf(InspectorState.ContainerOpening opening) {
+		String plain = opening.title().getString().strip();
+		boolean readable = plain.codePoints().anyMatch(Character::isLetterOrDigit)
+				&& plain.codePoints().noneMatch(c -> c >= 0xE000 && c <= 0xF8FF);
+		return readable ? opening.title()
+				: Text.translatable("flashbackinspector.log.untitled", opening.size());
 	}
 
 	@Override

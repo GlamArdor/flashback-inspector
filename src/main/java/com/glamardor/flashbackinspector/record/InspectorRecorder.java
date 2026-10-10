@@ -44,6 +44,11 @@ public final class InspectorRecorder {
 	private ItemStack[] lastContainer;
 	private int lastContainerId = -1;
 	private UUID owner;
+	/**
+	 * The player entity the last state was read off. The client makes a new one on every server
+	 * switch behind a proxy, which is the moment to start over with a full snapshot.
+	 */
+	private ClientPlayerEntity lastPlayer;
 	private int tickCounter;
 	/** Set when a write threw, so one bad recording does not spend the rest of the session trying. */
 	private boolean failed;
@@ -80,7 +85,14 @@ public final class InspectorRecorder {
 			return;
 		}
 
-		if (lastInventory == null) {
+		if (lastInventory == null || player != lastPlayer) {
+			// A new player entity means a new server: whatever container was open belonged to the
+			// old one, and a full state survives a viewer that misses the tick it was written on
+			// far better than forty one slot changes do.
+			lastPlayer = player;
+			lastContainer = null;
+			lastContainerId = -1;
+			lastContainerPos = null;
 			owner = player.getUuid();
 			lastInventory = new ItemStack[InventoryLayout.SIZE];
 			// A full snapshot first, so a replay opened at tick zero already knows everything.
@@ -294,6 +306,7 @@ public final class InspectorRecorder {
 		lastContainerPos = null;
 		lastContainerTitle = Text.empty();
 		owner = null;
+		lastPlayer = null;
 		tickCounter = 0;
 		failed = false;
 	}

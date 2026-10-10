@@ -10,7 +10,8 @@
 	"flashbackinspector.button.log": "Container log",
 
 	"flashbackinspector.log.title": "Containers opened",
-	"flashbackinspector.log.empty": "Nothing yet. The log fills in as the replay is watched.",
+	"flashbackinspector.log.empty": "No containers were opened in this recording.",
+	"flashbackinspector.log.untitled": "Container, %s slots",
 
 	"flashbackinspector.hint.container": "Container open: %s – press %s",
 
