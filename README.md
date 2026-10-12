@@ -74,8 +74,9 @@ all. Better nothing than the player's inventory a second time under someone else
 | Inventory key (`E`) | inspector for the player you are following; the container on the right, if one was open |
 | `K` | container log, clicking an entry seeks the replay to that tick |
 
-The log fills in as you watch: entries appear when their packets go by. One pass or a scrub along the
-timeline and it is complete.
+The mod reads its own data straight out of the replay file when the replay opens, so the log lists
+every container opened in the whole recording from the start, and the inventory is right at any tick,
+including right after a proxy moves you from a lobby to the server behind it.
 
 The container mode is set in the config: **manual** (default) or **follow the recording**, where the
 container opens and closes by itself on the same ticks. The second mode is handy for rewatching a scene
