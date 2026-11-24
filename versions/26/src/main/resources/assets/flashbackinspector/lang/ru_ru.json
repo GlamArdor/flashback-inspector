@@ -1,0 +1,50 @@
+{
+	"flashbackinspector.screen.title": "Инвентарь в реплее",
+	"flashbackinspector.section.inventory": "Инвентарь",
+	"flashbackinspector.source.recorder": "полные данные",
+	"flashbackinspector.source.equipment_only": "только экипировка",
+	"flashbackinspector.source.legacy": "хотбар и экипировка",
+	"flashbackinspector.not_sent": "Инвентарь чужого игрока сервер клиенту не передаёт",
+	"flashbackinspector.not_recorded": "Запись сделана без этого мода – остального инвентаря в ней нет",
+	"flashbackinspector.no_target": "Никто не выбран – начни следить за игроком",
+	"flashbackinspector.button.log": "Журнал контейнеров",
+
+	"flashbackinspector.log.title": "Открытия контейнеров",
+	"flashbackinspector.log.empty": "В этой записи контейнеры не открывались.",
+	"flashbackinspector.log.untitled": "Контейнер на %s слотов",
+
+	"flashbackinspector.hint.container": "Открыт контейнер: %s – нажми %s",
+
+	"flashbackinspector.container_mode.manual": "Вручную",
+	"flashbackinspector.container_mode.follow": "Следить за записью",
+
+	"flashbackinspector.config.title": "Flashback Inspector",
+	"flashbackinspector.config.reset": "Сбросить",
+	"flashbackinspector.config.no_cloth": "Установи Cloth Config, чтобы получить поиск и категории",
+
+	"flashbackinspector.category.recording": "Запись",
+	"flashbackinspector.category.viewing": "Просмотр",
+
+	"flashbackinspector.option.record_inventory": "Записывать инвентарь",
+	"flashbackinspector.option.record_inventory.tooltip": "Складывать твой инвентарь и надетое в реплей. Выключено – новые записи будут без него, уже записанное не меняется.",
+	"flashbackinspector.option.record_containers": "Записывать контейнеры",
+	"flashbackinspector.option.record_containers.tooltip": "Складывать в реплей содержимое сундуков и прочих контейнеров, которые ты открывал сам. Чужие контейнеры клиенту не видны.",
+	"flashbackinspector.option.scan_interval": "Как часто сверять",
+	"flashbackinspector.option.scan_interval.tooltip": "Через сколько тиков заглядывать в инвентарь. Пишутся только изменившиеся слоты, так что один тик стоит дёшево и ловит предмет, мелькнувший в слоте на мгновение.",
+
+	"flashbackinspector.option.replace_inventory_key": "Инвентарь на клавишу E",
+	"flashbackinspector.option.replace_inventory_key.tooltip": "В реплее клавиша инвентаря открывает этот экран вместо пустого инвентаря зрителя.",
+	"flashbackinspector.option.container_mode": "Контейнеры",
+	"flashbackinspector.option.container_mode.tooltip": "Вручную – контейнер ждёт в окне инвентаря, пока ты его не откроешь. Следить за записью – открывается и закрывается сам, на тех же тиках, что и на записи. Пока открыт любой экран, редактор Flashback не принимает мышь.",
+	"flashbackinspector.option.container_hint": "Подсказка о контейнере",
+	"flashbackinspector.option.container_hint.tooltip": "Строка над хотбаром в те моменты, когда на записи был открыт контейнер.",
+	"flashbackinspector.option.pause_when_opened": "Ставить реплей на паузу",
+	"flashbackinspector.option.pause_when_opened.tooltip": "Останавливать воспроизведение при открытии инвентаря, чтобы содержимое не менялось, пока ты его читаешь.",
+	"flashbackinspector.option.show_timecode": "Показывать таймкод",
+	"flashbackinspector.option.show_timecode.tooltip": "Время и номер тика в углу окна, чтобы скриншот сам говорил, к какому моменту относится.",
+
+	"flashbackinspector.unit.ticks": "%s тик.",
+
+	"key.category.flashbackinspector.main": "Flashback Inspector",
+	"key.flashbackinspector.log": "Журнал контейнеров"
+}

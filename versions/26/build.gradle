@@ -1,0 +1,92 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+version = "${project.mod_version}+26"
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	maven {
+		url = "https://api.modrinth.com/maven"
+		content { includeGroup "maven.modrinth" }
+	}
+	maven {
+		name = 'Henkelmax'
+		url = 'https://maven.maxhenkel.de/repository/public'
+	}
+	mavenCentral()
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// Only ever touched from inside a try in the screen factory, so the jar runs without them.
+	compileOnly "maven.modrinth:modmenu:${project.modmenu_version}"
+	compileOnly "maven.modrinth:cloth-config:${project.cloth_config_version}"
+	localRuntime "maven.modrinth:modmenu:${project.modmenu_version}"
+	localRuntime "maven.modrinth:cloth-config:${project.cloth_config_version}"
+
+	// Flashback itself: 26.x jars need no remapping, so the player's own jar is compiled against.
+	compileOnly files("${project.contik_mods}/Flashback-0.43.6-for-MC26.3.jar")
+	localRuntime files("${project.contik_mods}/Flashback-0.43.6-for-MC26.3.jar")
+}
+
+processResources {
+	inputs.property "version", project.version
+	inputs.property "minecraft_range", project.minecraft_range
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version, "minecraft_range": project.minecraft_range
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+	it.options.encoding = 'UTF-8'
+	it.options.compilerArgs += ['-Xmaxerrs', '1000']
+}
+
+java {
+	withSourcesJar()
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+}
+
+loom {
+	runs {
+		configureEach {
+			vmArg "-Dmixin.debug.export=true"
+		}
+	}
+}
+
+// src/gametest: a client game test that builds a flat world and drives the mod (./gradlew runClientGameTest)
+fabricApi {
+	configureTests {
+		createSourceSet = true
+		modId = "flashbackinspector-test"
+		enableGameTests = false
+		enableClientGameTests = true
+		eula = true
+	}
+}
+
+// Replay playback cannot be game-tested (the test harness steps the integrated server, which the
+// replay server does not survive): ./gradlew runReplayDriver -Preplay=<zip> checks it in a normal client.
+loom {
+	runs {
+		replayDriver {
+			client()
+			source sourceSets.gametest
+			runDir "build/run/driver"
+			vmArg "-Dfi.driver.replay=${project.findProperty('replay') ?: ''}"
+		}
+	}
+}

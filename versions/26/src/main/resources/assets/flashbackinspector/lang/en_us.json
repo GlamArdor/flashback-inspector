@@ -1,0 +1,50 @@
+{
+	"flashbackinspector.screen.title": "Inventory in the replay",
+	"flashbackinspector.section.inventory": "Inventory",
+	"flashbackinspector.source.recorder": "full data",
+	"flashbackinspector.source.equipment_only": "equipment only",
+	"flashbackinspector.source.legacy": "hotbar and equipment",
+	"flashbackinspector.not_sent": "A server never sends another player's inventory to the client",
+	"flashbackinspector.not_recorded": "This replay was made without the mod – the rest is not in it",
+	"flashbackinspector.no_target": "Nobody selected – spectate a player first",
+	"flashbackinspector.button.log": "Container log",
+
+	"flashbackinspector.log.title": "Containers opened",
+	"flashbackinspector.log.empty": "No containers were opened in this recording.",
+	"flashbackinspector.log.untitled": "Container, %s slots",
+
+	"flashbackinspector.hint.container": "Container open: %s – press %s",
+
+	"flashbackinspector.container_mode.manual": "Manual",
+	"flashbackinspector.container_mode.follow": "Follow the recording",
+
+	"flashbackinspector.config.title": "Flashback Inspector",
+	"flashbackinspector.config.reset": "Reset",
+	"flashbackinspector.config.no_cloth": "Install Cloth Config for search and categories",
+
+	"flashbackinspector.category.recording": "Recording",
+	"flashbackinspector.category.viewing": "Viewing",
+
+	"flashbackinspector.option.record_inventory": "Record the inventory",
+	"flashbackinspector.option.record_inventory.tooltip": "Put your inventory and worn items into the replay. Off, new recordings go without it; recordings already made are unaffected.",
+	"flashbackinspector.option.record_containers": "Record containers",
+	"flashbackinspector.option.record_containers.tooltip": "Put the contents of chests and other containers you open yourself into the replay. Containers opened by others are never sent to your client.",
+	"flashbackinspector.option.scan_interval": "How often to look",
+	"flashbackinspector.option.scan_interval.tooltip": "Ticks between two looks at the inventory. Only changed slots are written, so looking every tick is cheap and catches an item that passes through a slot for a single tick.",
+
+	"flashbackinspector.option.replace_inventory_key": "Inventory key opens this",
+	"flashbackinspector.option.replace_inventory_key.tooltip": "In a replay, the inventory key opens this screen instead of the spectator's empty one.",
+	"flashbackinspector.option.container_mode": "Containers",
+	"flashbackinspector.option.container_mode.tooltip": "Manual: the container waits in the inventory screen until you open it. Follow: it opens and closes by itself, on the ticks it did during the recording. While any screen is up, Flashback's editor stops taking the mouse.",
+	"flashbackinspector.option.container_hint": "Container hint",
+	"flashbackinspector.option.container_hint.tooltip": "A line above the hotbar while the recording has a container open.",
+	"flashbackinspector.option.pause_when_opened": "Pause the replay",
+	"flashbackinspector.option.pause_when_opened.tooltip": "Stop playback when the inventory opens, so the contents hold still while they are read.",
+	"flashbackinspector.option.show_timecode": "Show the timecode",
+	"flashbackinspector.option.show_timecode.tooltip": "Time and tick number in the corner, so a screenshot says for itself which moment it is of.",
+
+	"flashbackinspector.unit.ticks": "%s ticks",
+
+	"key.category.flashbackinspector.main": "Flashback Inspector",
+	"key.flashbackinspector.log": "Container log"
+}

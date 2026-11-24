@@ -1,0 +1,18 @@
+{
+	"schemaVersion": 1,
+	"id": "flashbackinspector-test",
+	"version": "1.0.0",
+	"name": "flashbackinspector tests",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"com.glamardor.flashbackinspector.test.ReplayDriver"
+		],
+		"fabric-client-gametest": [
+			"com.glamardor.flashbackinspector.test.InspectorGameTest"
+		]
+	},
+	"depends": {
+		"flashbackinspector": "*"
+	}
+}

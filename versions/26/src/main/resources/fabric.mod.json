@@ -1,0 +1,42 @@
+{
+	"schemaVersion": 1,
+	"id": "flashbackinspector",
+	"version": "${version}",
+	"name": "Flashback Inspector",
+	"description": "Records what you were carrying and what was inside every container you opened, and gives the Flashback replay a read-only inventory screen to look at it. Press the inventory key while watching: the recording player shows the whole inventory, everyone else shows the armour and the two hands, all with the tooltips the server actually sent – names, lore, stats, enchantments, durability.",
+	"authors": [
+		"Glam_Ardor"
+	],
+	"contact": {
+		"sources": "https://codeberg.org/Glam_Ardor/flashback-inspector",
+		"issues": "https://codeberg.org/Glam_Ardor/flashback-inspector/issues"
+	},
+	"license": "LGPL-3.0-or-later",
+	"icon": "assets/flashbackinspector/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.glamardor.flashbackinspector.FlashbackInspector"
+		],
+		"modmenu": [
+			"com.glamardor.flashbackinspector.compat.InspectorModMenu"
+		]
+	},
+	"mixins": [
+		{
+			"config": "flashbackinspector.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.0",
+		"minecraft": "${minecraft_range}",
+		"fabric-api": "*",
+		"flashback": ">=0.39.0",
+		"java": ">=25"
+	},
+	"suggests": {
+		"cloth-config": "*",
+		"modmenu": "*"
+	}
+}
